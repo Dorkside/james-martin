@@ -1,4 +1,8 @@
 <div class="mat-typography app">
-  <mat-toolbar>JAMES MARTIN - Coming Soon...</mat-toolbar>
+  <div class="header-image"></div>
+  <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+    <img ngxGravatar borderWidth="5" borderColor="#fff" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256">
+    <h1>JAMES MARTIN - Coming Soon...</h1>
+  </mat-toolbar>
   <router-outlet></router-outlet>
 </div>
