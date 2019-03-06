@@ -4,5 +4,13 @@
     <img ngxGravatar borderWidth="5" borderColor="#fff" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256">
     <h1>JAMES MARTIN - Coming Soon...</h1>
   </mat-toolbar>
+  <mat-toolbar color="accent" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+    <mat-nav-list class="main-menu" fxLayout="row" fxLayoutAlign="end stretch">
+      <a mat-list-item routerLink="/blog" routerLinkActive="active">Blog</a>
+      <a mat-list-item routerLink="/skills" routerLinkActive="active">Compétences</a>
+      <a mat-list-item routerLink="/experience" routerLinkActive="active">Expérience</a>
+      <a mat-list-item routerLink="/about" routerLinkActive="active">A propos</a>
+    </mat-nav-list>
+  </mat-toolbar>
   <router-outlet></router-outlet>
 </div>

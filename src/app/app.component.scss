@@ -7,3 +7,19 @@
   min-height: 50vh;
   background-color: black;
 }
+
+.main-menu {
+  padding-top: 0;
+  height: 100%;
+
+  a {
+    height: 100%;
+    text-transform: uppercase;
+    transition: border 225ms ease-in-out;
+    border-bottom: solid 0px white;
+  }
+
+  a.active {
+    border-bottom: solid 5px black;
+  }
+}
