@@ -1,18 +1,10 @@
 @import "../../theme/dorkside.theme.scss";
 
-.posts {
-  padding-top: 32px;
+.skills {
 
-  .post {
+  .skill {
     position: relative;
     padding: 16px 32px;
-
-    .date {
-      position: absolute;
-      top: 16px;
-      left: -32px;
-      transform: translateX(-100%);
-    }
 
     &::before {
       content: '';
