@@ -1,9 +1,9 @@
 <section class="posts">
-  <article class="post" fxLayout="column" fxLayoutGap="8px">
-    <h4 class="date">2 Septembre 1990</h4>
-    <h3>Naissance de mon amour</h3>
+  <article class="post" fxLayout="column" fxLayoutGap="8px" *ngFor="let post of posts">
+    <h4 class="date">{{post.publication}}</h4>
+    <h3>{{post.title}}</h3>
     <mat-card>
-      TEST
+      <markdown [data]="post.content"></markdown>
     </mat-card>
   </article>
 </section>
