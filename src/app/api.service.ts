@@ -19,6 +19,7 @@ export class ApiService {
             edges {
               node {
                 id
+                publication
                 title
                 content
               }
