@@ -1,16 +1,17 @@
 <perfect-scrollbar class="mat-typography app scrollbar">
   <div class="container" fxLayout="column" fxLayoutAlign="start stretch">
     <div class="header-image"></div>
-    <mat-toolbar class="toolbar" color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px" fxFlex="1 1 64px">
+    <mat-toolbar class="toolbar" color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"
+      fxFlex="1 1 64px">
       <img ngxGravatar borderWidth="3" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256" class="avatar">
       <h1 class="title">James D. Martin</h1>
     </mat-toolbar>
-    <mat-toolbar class="nav-bar" color="accent" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px" fxFlex="1 1 64px">
+    <mat-toolbar class="nav-bar" color="accent" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px"
+      fxFlex="1 1 64px">
       <h1 class="title small">JDM</h1>
       <mat-nav-list class="main-menu" fxLayout="row" fxLayoutAlign="end stretch">
         <a mat-list-item routerLink="/blog" routerLinkActive="active">Blog</a>
-        <a mat-list-item routerLink="/skills" routerLinkActive="active">Compétences</a>
-        <a mat-list-item routerLink="/projets" routerLinkActive="active">Projets</a>
+        <a mat-list-item routerLink="/resume" routerLinkActive="active">Résumé</a>
         <a mat-list-item routerLink="/about" routerLinkActive="active">A propos</a>
       </mat-nav-list>
     </mat-toolbar>

@@ -1,7 +1,7 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule, MatExpansionModule, MatListModule, MatToolbarModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatCardModule, MatExpansionModule, MatListModule, MatToolbarModule, MatTabsModule, MAT_DATE_LOCALE } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GravatarModule } from 'ngx-gravatar';
@@ -15,6 +15,7 @@ import { BlogComponent } from './blog/blog.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { GraphQLModule } from './graphql.module';
 import { SkillsComponent } from './skills/skills.component';
+import { ResumeComponent } from './resume/resume.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -25,7 +26,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BlogComponent,
     SkillsComponent,
     AboutComponent,
-    ExperienceComponent
+    ExperienceComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppRoutingModule,
     MatToolbarModule,
     MatCardModule,
+    MatTabsModule,
     FlexLayoutModule,
     MatListModule,
     MatExpansionModule,
