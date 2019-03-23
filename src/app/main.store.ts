@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { types } from 'mobx-state-tree';
-import { applySnapshot } from 'mobx-state-tree';
 import { ApiService } from './api.service';
-import { string } from 'mobx-state-tree/dist/internal';
 import * as moment from 'moment';
 moment.locale('fr');
 
 export const Post = types.model('Post', {
   id: types.identifier,
-  publication: types.optional(string, ""),
-  title: string,
-  content: string
+  publication: types.optional(types.string, ""),
+  title: types.string,
+  content: types.string
 }).views(self => ({
   prettyDate() {
     return moment(self.publication).format('D MMM YYYY')
@@ -19,7 +17,7 @@ export const Post = types.model('Post', {
 
 export const Page = types.model('Page', {
   title: types.identifier,
-  content: string
+  content: types.string
 })
 
 export const RootStore = types.model({
@@ -27,14 +25,10 @@ export const RootStore = types.model({
   pages: types.map(Page)
 }).actions(self => ({
   applyPosts(posts) {
-    applySnapshot(self, {
-      posts: posts
-    })
+    self.posts = posts;
   },
   applyPages(pages) {
-    applySnapshot(self, {
-      pages: pages
-    })
+    self.pages = pages;
   }
 })).views(self => ({
   getPosts() {
