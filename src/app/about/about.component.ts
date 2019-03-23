@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MainStore } from '../main.store';
+import { computed } from 'mobx-angular';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: MainStore) { }
 
   ngOnInit() {
+  }
+
+  @computed get page() {
+    return this.store.getPage("about");
   }
 
 }

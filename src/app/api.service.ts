@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,26 @@ export class ApiService {
     return this.apollo.watchQuery({
       query: gql`
         {
-          allPost {
-            edges {
-              node {
-                id
-                publication
-                title
-                content
-              }
-            }
+          posts(where:{
+            publication_gte: "${moment().startOf('day').format()}"
+          }) {
+            id
+            title
+            publication
+            content
+          }
+        }
+      `
+    }).valueChanges
+  }
+
+  getPages() {
+    return this.apollo.watchQuery({
+      query: gql`
+        {
+          pages {
+            title
+            content
           }
         }
       `

@@ -1,7 +1,7 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule, MatExpansionModule, MatListModule, MatToolbarModule } from '@angular/material';
+import { MatCardModule, MatExpansionModule, MatListModule, MatToolbarModule, MAT_DATE_LOCALE } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GravatarModule } from 'ngx-gravatar';
@@ -43,6 +43,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     GraphQLModule
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'fr' },
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
