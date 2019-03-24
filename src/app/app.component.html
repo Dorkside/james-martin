@@ -6,14 +6,31 @@
       <img ngxGravatar borderWidth="3" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256" class="avatar">
       <h1 class="title">James D. Martin</h1>
     </mat-toolbar>
-    <mat-toolbar class="nav-bar" color="accent" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px"
+    <mat-toolbar class="nav-bar" color="accent" fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="16px"
       fxFlex="1 1 64px">
       <h1 class="title small">JDM</h1>
-      <mat-nav-list class="main-menu" fxLayout="row" fxLayoutAlign="end stretch">
-        <a mat-list-item routerLink="/blog" routerLinkActive="active">Blog</a>
-        <a mat-list-item routerLink="/resume" routerLinkActive="active">Résumé</a>
-        <a mat-list-item routerLink="/about" routerLinkActive="active">A propos</a>
-      </mat-nav-list>
+      <mat-toolbar-row fxHide fxShow.gt-sm fxLayout="row" fxLayoutAlign="end stretch">
+        <mat-nav-list class="main-menu" fxLayout="row" fxLayoutAlign="end stretch">
+          <a mat-list-item routerLink="/blog" routerLinkActive="active">Blog</a>
+          <a mat-list-item routerLink="/resume" routerLinkActive="active">Résumé</a>
+          <a mat-list-item routerLink="/about" routerLinkActive="active">A propos</a>
+        </mat-nav-list>
+      </mat-toolbar-row>
+      <mat-toolbar-row fxHide.gt-sm fxLayout="row" fxLayoutAlign="end center">
+        <button mat-icon-button (click)="toggleMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-toolbar [fxHide]="!menuOpen" fxHide.gt-sm class="nav-bar" color="accent" fxLayout="column" fxLayoutAlign="end"
+      fxFlex="1 1 192px">
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="end">
+        <mat-nav-list class="main-menu" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="end stretch">
+          <a mat-list-item routerLink="/blog" routerLinkActive="active">Blog</a>
+          <a mat-list-item routerLink="/resume" routerLinkActive="active">Résumé</a>
+          <a mat-list-item routerLink="/about" routerLinkActive="active">A propos</a>
+        </mat-nav-list>
+      </mat-toolbar-row>
     </mat-toolbar>
     <section class="content" fxFlex="1 1 auto">
       <router-outlet></router-outlet>

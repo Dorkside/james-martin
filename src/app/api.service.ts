@@ -17,7 +17,7 @@ export class ApiService {
       query: gql`
         {
           posts(where:{
-            publication_gte: "${moment().startOf('day').format()}"
+            publication_lte: "${moment().endOf('day').format()}"
           }) {
             id
             title
@@ -36,6 +36,22 @@ export class ApiService {
           pages {
             title
             content
+          }
+        }
+      `
+    }).valueChanges
+  }
+
+  getProjects() {
+    return this.apollo.watchQuery({
+      query: gql`
+        {
+          projects {
+            title
+            poste
+            description
+            startDate
+            endDate
           }
         }
       `

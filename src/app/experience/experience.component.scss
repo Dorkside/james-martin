@@ -1,21 +1,17 @@
 @import "../../theme/dorkside.theme.scss";
 
-.projets {
+:host {
+  overflow: visible;
+}
+
+::ng-deep.projets {
   .projet {
     position: relative;
     padding: 16px 32px;
 
-    &::before {
-      content: '';
-      background-color: mat-color($mat-blue-grey, 200);
-      border-radius: 50%;
-      position: absolute;
-      left: -2px;
-      transform: translateX(-50%);
-      top: 12px;
-      height: 24px;
-      width: 24px;
-      border: solid 3px black;
+    .mat-expansion-panel-header-description {
+      display: block;
+      text-align: right;
     }
   }
 }

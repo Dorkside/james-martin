@@ -1,4 +1,7 @@
-.resume {
+::ng-deep.resume {
   padding-top: 32px;
-  position: relative;
+
+  .mat-tab-labels {
+    justify-content: center;
+  }
 }

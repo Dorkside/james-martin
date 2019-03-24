@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MainStore } from '../main.store';
 import { computed } from 'mobx-angular';
+
+import { MainStore } from '../main.store';
 
 @Component({
   selector: 'app-blog',
@@ -9,7 +10,8 @@ import { computed } from 'mobx-angular';
 })
 export class BlogComponent implements OnInit {
 
-  constructor(private store: MainStore) { }
+  constructor(private store: MainStore) {
+  }
 
   ngOnInit() {
   }

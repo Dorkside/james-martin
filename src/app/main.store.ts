@@ -20,15 +20,33 @@ export const Page = types.model('Page', {
   content: types.string
 })
 
+export const Project = types.model('Project', {
+  title: types.string,
+  poste: types.string,
+  description: types.string,
+  startDate: types.string,
+  endDate: types.maybeNull(types.string)
+}).views(self => ({
+  years() {
+    const start = moment(self.startDate).format('YYYY');
+    const end = self.endDate ? moment(self.endDate).format('YYYY') : "Aujourd'hui";
+    return start !== end ? `${start} - ${end}` : start;
+  }
+}))
+
 export const RootStore = types.model({
   posts: types.array(Post),
-  pages: types.map(Page)
+  pages: types.map(Page),
+  projects: types.array(Project)
 }).actions(self => ({
   applyPosts(posts) {
     self.posts = posts;
   },
   applyPages(pages) {
     self.pages = pages;
+  },
+  applyProjects(projects) {
+    self.projects = projects;
   }
 })).views(self => ({
   getPosts() {
@@ -36,6 +54,9 @@ export const RootStore = types.model({
   },
   getPage(page) {
     return self.pages.get(page)
+  },
+  getProjects() {
+    return self.projects
   }
 }));
 
@@ -45,7 +66,8 @@ export const RootStore = types.model({
 export class MainStore {
   root = RootStore.create({
     posts: [],
-    pages: {}
+    pages: {},
+    projects: []
   });
 
   constructor(private api: ApiService) {
@@ -64,6 +86,13 @@ export class MainStore {
       }, {});
       this.root.applyPages(data);
     })
+    this.api.getProjects().subscribe(result => {
+      const data = result.data['projects'].map(project => {
+        const { __typename, ..._project } = project
+        return _project;
+      });
+      this.root.applyProjects(data);
+    })
   }
 
   getPosts() {
@@ -72,5 +101,9 @@ export class MainStore {
 
   getPage(page) {
     return this.root.getPage(page);
+  }
+
+  getProjects() {
+    return this.root.getProjects();
   }
 }

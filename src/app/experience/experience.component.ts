@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { computed } from 'mobx-angular';
+
+import { MainStore } from '../main.store';
 
 @Component({
   selector: 'app-experience',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: MainStore) { }
 
   ngOnInit() {
   }
 
+  @computed get projects() {
+    return this.store.getProjects().sort((a, b) => {
+      return a.startDate > b.startDate ? -1 : 1;
+    });
+  }
 }

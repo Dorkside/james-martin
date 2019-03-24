@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { observable, action } from 'mobx-angular';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @observable menuOpen = false;
+
+  @action
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }

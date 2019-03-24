@@ -1,8 +1,8 @@
-<section class="resume">
-  <article class="experience">
+<mat-tab-group class="resume" [dynamicHeight]="true">
+  <mat-tab label="Projets">
     <app-experience></app-experience>
-  </article>
-  <article class="skills">
+  </mat-tab>
+  <mat-tab label="Compétences">
     <app-skills></app-skills>
-  </article>
-</section>
+  </mat-tab>
+</mat-tab-group>
