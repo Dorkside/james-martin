@@ -16,7 +16,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   @computed get projects() {
-    return this.store.getProjects().sort((a, b) => {
+    return this.store.getProjects.slice().sort((a, b) => {
       return a.startDate > b.startDate ? -1 : 1;
     });
   }

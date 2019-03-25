@@ -17,6 +17,6 @@ export class BlogComponent implements OnInit {
   }
 
   @computed get posts() {
-    return this.store.getPosts();
+    return this.store.getPosts;
   }
 }

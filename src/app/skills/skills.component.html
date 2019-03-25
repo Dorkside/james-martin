@@ -1,73 +1,15 @@
-<section class="skills">
+<section class="skills" *mobxAutorun>
   <mat-accordion>
-    <article class="skill" fxLayout="column" fxLayoutGap="8px">
-      <h3>UI/UX</h3>
-      <mat-expansion-panel>
+    <ng-container fxLayout="column" *ngFor="let skillCategory of skillCategories">
+      <h3>{{skillCategory.name}}</h3>
+      <mat-expansion-panel *ngFor="let skill of skillCategory.skills">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Skill name
+            {{skill.name}}
           </mat-panel-title>
-          <mat-panel-description>
-            description
-          </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>Lorem Ipsum dolor</p>
+        <p>Associated projects (coming soon...)</p>
       </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Skill name
-          </mat-panel-title>
-          <mat-panel-description>
-            description
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Lorem Ipsum dolor</p>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Skill name
-          </mat-panel-title>
-          <mat-panel-description>
-            description
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Lorem Ipsum dolor</p>
-      </mat-expansion-panel>
-    </article>
-
-    <article class="skill" fxLayout="column" fxLayoutGap="8px">
-      <h3>UI/UX</h3>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Skill name
-          </mat-panel-title>
-          <mat-panel-description>
-            description
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Lorem Ipsum dolor</p>
-      </mat-expansion-panel>
-    </article>
-    <article class="skill" fxLayout="column" fxLayoutGap="8px">
-      <h3>UI/UX</h3>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Skill name
-          </mat-panel-title>
-          <mat-panel-description>
-            description
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Lorem Ipsum dolor</p>
-      </mat-expansion-panel>
-    </article>
+    </ng-container>
   </mat-accordion>
 </section>

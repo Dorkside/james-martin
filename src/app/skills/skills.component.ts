@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { computed } from 'mobx-angular';
+import { MainStore } from '../main.store';
 
 @Component({
   selector: 'app-skills',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: MainStore) {
+  }
 
   ngOnInit() {
   }
 
+  @computed get skillCategories() {
+    return this.store.getSkillCategories;
+  }
 }

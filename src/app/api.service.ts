@@ -57,4 +57,36 @@ export class ApiService {
       `
     }).valueChanges
   }
+
+  getSkillCategories() {
+    return this.apollo.watchQuery({
+      query: gql`
+        {
+          skillCategories {
+            name
+            skills {
+              id
+            }
+          }
+        }
+      `
+    }).valueChanges
+  }
+
+  getSkills() {
+    return this.apollo.watchQuery({
+      query: gql`
+        {
+          skills {
+            id
+            name
+            type
+            skillCategory {
+              name
+            }
+          }
+        }
+      `
+    }).valueChanges
+  }
 }

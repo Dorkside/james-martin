@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { types } from 'mobx-state-tree';
+import { types, getSnapshot } from 'mobx-state-tree';
 import { ApiService } from './api.service';
 import * as moment from 'moment';
+import { computed } from 'mobx-angular';
 moment.locale('fr');
 
 export const Post = types.model('Post', {
@@ -34,10 +35,24 @@ export const Project = types.model('Project', {
   }
 }))
 
+export const SkillCategory = types.model('SkillCategory', {
+  name: types.identifier,
+  skills: types.maybeNull(types.array(types.reference(types.late(() => Skill))))
+})
+
+export const Skill = types.model('Skill', {
+  id: types.identifier,
+  name: types.string,
+  type: types.enumeration(["Language", "Concept", "Technology"]),
+  skillCategory: types.maybeNull(types.reference(types.late(() => SkillCategory)))
+})
+
 export const RootStore = types.model({
   posts: types.array(Post),
   pages: types.map(Page),
-  projects: types.array(Project)
+  projects: types.array(Project),
+  skillCategories: types.array(SkillCategory),
+  skills: types.array(Skill)
 }).actions(self => ({
   applyPosts(posts) {
     self.posts = posts;
@@ -47,6 +62,12 @@ export const RootStore = types.model({
   },
   applyProjects(projects) {
     self.projects = projects;
+  },
+  applySkillCategories(skillCategories) {
+    self.skillCategories = skillCategories;
+  },
+  applySkills(skills) {
+    self.skills = skills;
   }
 })).views(self => ({
   getPosts() {
@@ -57,6 +78,9 @@ export const RootStore = types.model({
   },
   getProjects() {
     return self.projects
+  },
+  getSkillCategories() {
+    return self.skillCategories
   }
 }));
 
@@ -67,13 +91,15 @@ export class MainStore {
   root = RootStore.create({
     posts: [],
     pages: {},
-    projects: []
+    projects: [],
+    skillCategories: [],
+    skills: []
   });
 
   constructor(private api: ApiService) {
     this.api.getPosts().subscribe(result => {
       const data = result.data['posts'].map(post => {
-        const { __typename, ..._post } = post
+        const { __typename, ..._post } = post;
         return _post;
       });
       this.root.applyPosts(data);
@@ -88,14 +114,29 @@ export class MainStore {
     })
     this.api.getProjects().subscribe(result => {
       const data = result.data['projects'].map(project => {
-        const { __typename, ..._project } = project
+        const { __typename, ..._project } = project;
         return _project;
       });
       this.root.applyProjects(data);
     })
+    this.api.getSkillCategories().subscribe(result => {
+      const data = result.data['skillCategories'].map(skillCategory => {
+        const { __typename, skills, ..._skillCategory } = skillCategory;
+        return { ..._skillCategory, skills: skills ? skills.map(skill => skill.id) : null };
+      });
+      this.root.applySkillCategories(data);
+    })
+    this.api.getSkills().subscribe(result => {
+      const data = result.data['skills'].map(skill => {
+        const { __typename, skillCategory, ..._skill } = skill;
+        return { ..._skill, skillCategory: skillCategory ? skillCategory.name : null };
+      });
+      this.root.applySkills(data);
+    })
+    console.log(this.root)
   }
 
-  getPosts() {
+  @computed get getPosts() {
     return this.root.getPosts();
   }
 
@@ -103,7 +144,11 @@ export class MainStore {
     return this.root.getPage(page);
   }
 
-  getProjects() {
+  @computed get getProjects() {
     return this.root.getProjects();
+  }
+
+  @computed get getSkillCategories() {
+    return this.root.getSkillCategories();
   }
 }
