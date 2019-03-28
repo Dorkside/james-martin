@@ -17,6 +17,7 @@ export class ApiService {
       query: gql`
         {
           posts(where:{
+            status: PUBLISHED,
             publication_lte: "${moment().endOf('day').format()}"
           }) {
             id
@@ -33,7 +34,7 @@ export class ApiService {
     return this.apollo.watchQuery({
       query: gql`
         {
-          pages {
+          pages(where: { status: PUBLISHED })  {
             title
             content
           }
@@ -46,7 +47,7 @@ export class ApiService {
     return this.apollo.watchQuery({
       query: gql`
         {
-          projects {
+          projects(where: { status: PUBLISHED })  {
             title
             poste
             description
@@ -62,7 +63,7 @@ export class ApiService {
     return this.apollo.watchQuery({
       query: gql`
         {
-          skillCategories {
+          skillCategories(where: { status: PUBLISHED })  {
             name
             skills {
               id
@@ -77,7 +78,7 @@ export class ApiService {
     return this.apollo.watchQuery({
       query: gql`
         {
-          skills {
+          skills(where: { status: PUBLISHED }) {
             id
             name
             type
