@@ -14,15 +14,19 @@
     <article class="projet" fxLayout="column" fxLayoutGap="8px">
       <mat-expansion-panel *ngFor="let project of employer.projects">
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{project.title}}
-          </mat-panel-title>
-          <mat-panel-description>
-            {{project.poste}}
-          </mat-panel-description>
+          <div class="header-content" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-panel-title fxFlex>
+              {{project.title}}
+            </mat-panel-title>
+            <mat-panel-description fxFlex="0 0 auto">
+              <mat-chip-list fxLayoutAlign="end">
+                <mat-chip *ngIf="project.client">{{project.client}}</mat-chip>
+              </mat-chip-list>
+            </mat-panel-description>
+          </div>
         </mat-expansion-panel-header>
         <mat-chip-list>
-          <mat-chip *ngIf="project.client">Client : {{project.client}}</mat-chip>
+          <mat-chip *ngIf="project.poste">{{project.poste}}</mat-chip>
         </mat-chip-list>
       </mat-expansion-panel>
     </article>

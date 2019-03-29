@@ -40,7 +40,7 @@ export const Employer = types.model('Employer', {
 export const Project = types.model('Project', {
   id: types.identifier,
   title: types.string,
-  poste: types.string,
+  poste: types.maybeNull(types.string),
   client: types.maybeNull(types.string)
 })
 
