@@ -1,18 +1,30 @@
-<section class="projets">
-  <mat-accordion>
+<ng-container *ngFor="let employer of employers">
+  <section class="employers">
+    <article class="employer" fxLayout="column" fxLayoutGap="8px">
+      <h2>
+        {{employer.name}}
+        <small>&nbsp;({{employer.years()}})</small>
+      </h2>
+      <h3>{{employer.poste}}</h3>
+      <p>{{employer.description}}</p>
+    </article>
+  </section>
+
+  <mat-accordion class="projets">
     <article class="projet" fxLayout="column" fxLayoutGap="8px">
-      <mat-expansion-panel *ngFor="let project of projects">
+      <mat-expansion-panel *ngFor="let project of employer.projects">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{project.title}}
-            <small>&nbsp;({{project.years()}})</small>
           </mat-panel-title>
           <mat-panel-description>
             {{project.poste}}
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>{{project.description}}</p>
+        <mat-chip-list>
+          <mat-chip *ngIf="project.client">Client : {{project.client}}</mat-chip>
+        </mat-chip-list>
       </mat-expansion-panel>
     </article>
   </mat-accordion>
-</section>
+</ng-container>

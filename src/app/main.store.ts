@@ -21,12 +21,14 @@ export const Page = types.model('Page', {
   content: types.string
 })
 
-export const Project = types.model('Project', {
-  title: types.string,
+export const Employer = types.model('Employer', {
+  id: types.identifier,
+  name: types.string,
   poste: types.string,
-  description: types.string,
+  description: types.maybeNull(types.string),
   startDate: types.string,
-  endDate: types.maybeNull(types.string)
+  endDate: types.maybeNull(types.string),
+  projects: types.array(types.reference(types.late(() => Project)))
 }).views(self => ({
   years() {
     const start = moment(self.startDate).format('YYYY');
@@ -34,6 +36,13 @@ export const Project = types.model('Project', {
     return start !== end ? `${start} - ${end}` : start;
   }
 }))
+
+export const Project = types.model('Project', {
+  id: types.identifier,
+  title: types.string,
+  poste: types.string,
+  client: types.maybeNull(types.string)
+})
 
 export const SkillCategory = types.model('SkillCategory', {
   name: types.identifier,
@@ -50,6 +59,7 @@ export const Skill = types.model('Skill', {
 export const RootStore = types.model({
   posts: types.array(Post),
   pages: types.map(Page),
+  employers: types.array(Employer),
   projects: types.array(Project),
   skillCategories: types.array(SkillCategory),
   skills: types.array(Skill)
@@ -59,6 +69,9 @@ export const RootStore = types.model({
   },
   applyPages(pages) {
     self.pages = pages;
+  },
+  applyEmployers(employers) {
+    self.employers = employers;
   },
   applyProjects(projects) {
     self.projects = projects;
@@ -76,6 +89,9 @@ export const RootStore = types.model({
   getPage(page) {
     return self.pages.get(page)
   },
+  getEmployers() {
+    return self.employers
+  },
   getProjects() {
     return self.projects
   },
@@ -91,6 +107,7 @@ export class MainStore {
   root = RootStore.create({
     posts: [],
     pages: {},
+    employers: [],
     projects: [],
     skillCategories: [],
     skills: []
@@ -111,6 +128,13 @@ export class MainStore {
         return acc;
       }, {});
       this.root.applyPages(data);
+    })
+    this.api.getEmployers().subscribe(result => {
+      const data = result.data['employers'].map(employer => {
+        const { __typename, projects, ..._employer } = employer;
+        return { ..._employer, projects: projects ? projects.map(project => project.id) : null };
+      });
+      this.root.applyEmployers(data);
     })
     this.api.getProjects().subscribe(result => {
       const data = result.data['projects'].map(project => {
@@ -142,6 +166,10 @@ export class MainStore {
 
   getPage(page) {
     return this.root.getPage(page);
+  }
+
+  @computed get getEmployers() {
+    return this.root.getEmployers();
   }
 
   @computed get getProjects() {

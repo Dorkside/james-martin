@@ -15,9 +15,16 @@ export class ExperienceComponent implements OnInit {
   ngOnInit() {
   }
 
-  @computed get projects() {
-    return this.store.getProjects.slice().sort((a, b) => {
+  @computed get employers() {
+    return this.store.getEmployers.slice().sort((a, b) => {
       return a.startDate > b.startDate ? -1 : 1;
     });
+  }
+
+  @computed get projects() {
+    // return this.store.getProjects.slice().sort((a, b) => {
+    //   return a.startDate > b.startDate ? -1 : 1;
+    // });
+    return this.store.getProjects;
   }
 }

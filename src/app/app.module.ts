@@ -9,6 +9,7 @@ import {
   MatIconModule,
   MatListModule,
   MatTabsModule,
+  MatChipsModule,
   MatToolbarModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,6 +49,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatChipsModule,
     MatTabsModule,
     FlexLayoutModule,
     MatListModule,

@@ -48,11 +48,30 @@ export class ApiService {
       query: gql`
         {
           projects(where: { status: PUBLISHED })  {
+            id
             title
+            poste
+            client
+          }
+        }
+      `
+    }).valueChanges
+  }
+
+  getEmployers() {
+    return this.apollo.watchQuery({
+      query: gql`
+        {
+          employers(where: { status: PUBLISHED })  {
+            id
+            name
             poste
             description
             startDate
             endDate
+            projects {
+              id
+            }
           }
         }
       `
