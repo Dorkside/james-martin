@@ -22,6 +22,19 @@
 .header-image {
   min-height: 50vh;
   background-color: mat-color($mat-blue-grey, 900);
+  position: relative;
+
+  .wip {
+    height: 300px;
+    max-height: 30vh;
+  }
+
+  .wip-title {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 0;
+    color: #ff8f00;
+  }
 }
 
 .title {
