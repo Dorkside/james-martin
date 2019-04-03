@@ -86,3 +86,19 @@
   margin: 0 auto;
   border-left: dotted 3px black;
 }
+
+
+.stroke {
+  fill: none;
+  stroke: black;
+  stroke-width: 3px;
+  transition: stroke 7s ease-in-out;
+}
+
+.stroke.white {
+  stroke: white;
+}
+
+.stroke.black {
+  stroke: black;
+}
