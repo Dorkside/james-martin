@@ -9,7 +9,6 @@ import * as moment from 'moment';
 export class ApiService {
 
   constructor(private apollo: Apollo) {
-
   }
 
   getPosts() {
@@ -24,86 +23,6 @@ export class ApiService {
             title
             publication
             content
-          }
-        }
-      `
-    }).valueChanges
-  }
-
-  getPages() {
-    return this.apollo.watchQuery({
-      query: gql`
-        {
-          pages(where: { status: PUBLISHED })  {
-            title
-            content
-          }
-        }
-      `
-    }).valueChanges
-  }
-
-  getProjects() {
-    return this.apollo.watchQuery({
-      query: gql`
-        {
-          projects(where: { status: PUBLISHED })  {
-            id
-            title
-            poste
-            client
-          }
-        }
-      `
-    }).valueChanges
-  }
-
-  getEmployers() {
-    return this.apollo.watchQuery({
-      query: gql`
-        {
-          employers(where: { status: PUBLISHED })  {
-            id
-            name
-            poste
-            description
-            startDate
-            endDate
-            projects {
-              id
-            }
-          }
-        }
-      `
-    }).valueChanges
-  }
-
-  getSkillCategories() {
-    return this.apollo.watchQuery({
-      query: gql`
-        {
-          skillCategories(where: { status: PUBLISHED })  {
-            name
-            skills {
-              id
-            }
-          }
-        }
-      `
-    }).valueChanges
-  }
-
-  getSkills() {
-    return this.apollo.watchQuery({
-      query: gql`
-        {
-          skills(where: { status: PUBLISHED }) {
-            id
-            name
-            type
-            skillCategory {
-              name
-            }
           }
         }
       `
