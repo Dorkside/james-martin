@@ -157,7 +157,7 @@ export class MainStore {
     //   });
     //   this.root.applySkills(data);
     // })
-    console.log(this.root)
+    // console.log(this.root)
   }
 
   @computed get getPosts() {

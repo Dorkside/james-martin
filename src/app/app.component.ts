@@ -10,12 +10,8 @@ import { observable, action } from 'mobx-angular';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  @action
-  toggleMenu() {
-  }
-
   ngOnInit() {
+    console.log("Coucou, tu veux voir ma 1|0 ?")
     // var myDrawing1 = new Drawing(1000);
     // myDrawing1.init();
     // myDrawing1.draw();
