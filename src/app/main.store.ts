@@ -121,42 +121,42 @@ export class MainStore {
       });
       this.root.applyPosts(data);
     })
-    this.api.getPages().subscribe(result => {
-      const data = result.data['pages'].reduce((acc, page) => {
-        const { __typename, ..._page } = page;
-        acc[_page.title] = _page;
-        return acc;
-      }, {});
-      this.root.applyPages(data);
-    })
-    this.api.getEmployers().subscribe(result => {
-      const data = result.data['employers'].map(employer => {
-        const { __typename, projects, ..._employer } = employer;
-        return { ..._employer, projects: projects ? projects.map(project => project.id) : null };
-      });
-      this.root.applyEmployers(data);
-    })
-    this.api.getProjects().subscribe(result => {
-      const data = result.data['projects'].map(project => {
-        const { __typename, ..._project } = project;
-        return _project;
-      });
-      this.root.applyProjects(data);
-    })
-    this.api.getSkillCategories().subscribe(result => {
-      const data = result.data['skillCategories'].map(skillCategory => {
-        const { __typename, skills, ..._skillCategory } = skillCategory;
-        return { ..._skillCategory, skills: skills ? skills.map(skill => skill.id) : null };
-      });
-      this.root.applySkillCategories(data);
-    })
-    this.api.getSkills().subscribe(result => {
-      const data = result.data['skills'].map(skill => {
-        const { __typename, skillCategory, ..._skill } = skill;
-        return { ..._skill, skillCategory: skillCategory ? skillCategory.name : null };
-      });
-      this.root.applySkills(data);
-    })
+    // this.api.getPages().subscribe(result => {
+    //   const data = result.data['pages'].reduce((acc, page) => {
+    //     const { __typename, ..._page } = page;
+    //     acc[_page.title] = _page;
+    //     return acc;
+    //   }, {});
+    //   this.root.applyPages(data);
+    // })
+    // this.api.getEmployers().subscribe(result => {
+    //   const data = result.data['employers'].map(employer => {
+    //     const { __typename, projects, ..._employer } = employer;
+    //     return { ..._employer, projects: projects ? projects.map(project => project.id) : null };
+    //   });
+    //   this.root.applyEmployers(data);
+    // })
+    // this.api.getProjects().subscribe(result => {
+    //   const data = result.data['projects'].map(project => {
+    //     const { __typename, ..._project } = project;
+    //     return _project;
+    //   });
+    //   this.root.applyProjects(data);
+    // })
+    // this.api.getSkillCategories().subscribe(result => {
+    //   const data = result.data['skillCategories'].map(skillCategory => {
+    //     const { __typename, skills, ..._skillCategory } = skillCategory;
+    //     return { ..._skillCategory, skills: skills ? skills.map(skill => skill.id) : null };
+    //   });
+    //   this.root.applySkillCategories(data);
+    // })
+    // this.api.getSkills().subscribe(result => {
+    //   const data = result.data['skills'].map(skill => {
+    //     const { __typename, skillCategory, ..._skill } = skill;
+    //     return { ..._skill, skillCategory: skillCategory ? skillCategory.name : null };
+    //   });
+    //   this.root.applySkills(data);
+    // })
     console.log(this.root)
   }
 
