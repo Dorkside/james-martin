@@ -7,6 +7,6 @@
       {{post.title}}
       <small fxHide.gt-md> - {{post.prettyDate()}}</small>
     </h2>
-    <markdown [data]="post.content"></markdown>
+    <markdown ngPreserveWhitespaces [data]="post.content"></markdown>
   </article>
 </section>
