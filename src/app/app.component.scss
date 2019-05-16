@@ -20,7 +20,7 @@
 }
 
 .header-image {
-  min-height: 50vh;
+  min-height: 64px;
   background-color: mat-color($mat-blue-grey, 900);
   position: relative;
 
@@ -39,6 +39,8 @@
 
 .title {
   z-index: 2;
+  line-height: 64px !important;
+  height: 100%;
   font-family: 'Comfortaa', cursive !important;
 
   &.small {
@@ -82,7 +84,7 @@
 
 .content {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   border-left: dotted 3px black;
 }

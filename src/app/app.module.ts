@@ -5,15 +5,16 @@ import {
   MAT_DATE_LOCALE,
   MatButtonModule,
   MatCardModule,
+  MatChipsModule,
   MatExpansionModule,
   MatIconModule,
   MatListModule,
   MatTabsModule,
-  MatChipsModule,
   MatToolbarModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MobxAngularModule } from 'mobx-angular';
 import { GravatarModule } from 'ngx-gravatar';
 import { MarkdownModule } from 'ngx-markdown';
@@ -27,6 +28,10 @@ import { ExperienceComponent } from './experience/experience.component';
 import { GraphQLModule } from './graphql.module';
 import { ResumeComponent } from './resume/resume.component';
 import { SkillsComponent } from './skills/skills.component';
+
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -58,7 +63,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     GraphQLModule,
-    MobxAngularModule
+    MobxAngularModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr' },
@@ -69,4 +75,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    library.add(faTwitter)
+  }
+}

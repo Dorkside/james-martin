@@ -1,9 +1,12 @@
 <section class="posts">
   <article class="post" fxLayout="column" fxLayoutGap="8px" *ngFor="let post of posts">
-    <h4 class="date">{{post.prettyDate()}}</h4>
-    <h3>{{post.title}}</h3>
-    <mat-card>
-      <markdown [data]="post.content"></markdown>
-    </mat-card>
+    <h4 class="date" fxHide.lt-lg>
+      {{post.prettyDate()}}
+    </h4>
+    <h2>
+      {{post.title}}
+      <small fxHide.gt-md> - {{post.prettyDate()}}</small>
+    </h2>
+    <markdown [data]="post.content"></markdown>
   </article>
 </section>
