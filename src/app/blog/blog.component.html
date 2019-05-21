@@ -3,10 +3,17 @@
     <h4 class="date" fxHide.lt-lg>
       {{post.prettyDate()}}
     </h4>
-    <h1 class="title">
-      {{post.title}}
-      <small fxHide.gt-md> - {{post.prettyDate()}}</small>
-    </h1>
-    <markdown ngPreserveWhitespaces [data]="post.content"></markdown>
+    <a routerLink="/article/{{post.id}}" class="title">
+      <h1>
+        {{post.title}}
+        <small fxHide.gt-md> - {{post.prettyDate()}}</small>
+      </h1>
+    </a>
+    <markdown ngPreserveWhitespaces [data]="post.shortContent()"></markdown>
+    <a routerLink="/article/{{post.id}}" class="plus">
+      <h4>
+        Lire plus...
+      </h4>
+    </a>
   </article>
 </section>

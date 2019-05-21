@@ -2,13 +2,19 @@
   <div class="container" fxLayout="column" fxLayoutAlign="start stretch">
     <mat-toolbar class="toolbar" color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"
       fxFlex="1 1 64px">
-      <img ngxGravatar borderWidth="3" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256" class="avatar">
-      <h1 class="title">James D. Martin | Full Stack Developer</h1>
+      <a routerLink="/" class="avatar">
+        <img ngxGravatar borderWidth="3" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256">
+      </a>
+      <a routerLink="/" class="title">
+        <h1>James D. Martin | Full Stack Developer</h1>
+      </a>
     </mat-toolbar>
     <mat-toolbar class="nav-bar" color="accent" fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="16px"
       fxFlex="1 1 64px">
-      <h1 class="title small">JDM</h1>
       <mat-toolbar-row fxLayout="row" fxLayoutAlign="end stretch">
+        <a routerLink="/" class="title small">
+          <h1>JDM</h1>
+        </a>
         <mat-nav-list class="main-menu" fxLayout="row" fxLayoutAlign="end stretch">
           <a mat-list-item href="https://twitter.com/James_Dorkside">
             <fa-icon mat-icon [icon]="['fab','twitter']"></fa-icon>

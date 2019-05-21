@@ -1,0 +1,15 @@
+<section class="article" *mobxAutorun>
+  <article class="post" fxLayout="column" fxLayoutGap="8px" *ngIf="post">
+    <h4 class="date" fxHide.lt-lg>
+      {{post.prettyDate()}}
+    </h4>
+    <h1 class="title">
+      {{post.title}}
+      <small fxHide.gt-md> - {{post.prettyDate()}}</small>
+    </h1>
+    <markdown ngPreserveWhitespaces [data]="post.content"></markdown>
+  </article>
+  <aside class="comments">
+    <disqus [identifier]="post.id"></disqus>
+  </aside>
+</section>

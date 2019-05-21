@@ -21,10 +21,14 @@
 }
 
 .title {
+  text-decoration: none;
   z-index: 2;
-  line-height: 64px !important;
-  height: 100%;
-  font-family: 'Comfortaa', cursive !important;
+
+  h1 {
+    line-height: 64px !important;
+    height: 100%;
+  }
+
 
   &.small {
     position: absolute;
@@ -39,7 +43,10 @@
 }
 
 .avatar {
-  background-color: mat-color($mat-blue-grey, 400);
+  img {
+    background-color: mat-color($mat-blue-grey, 400);
+  }
+
   z-index: 3;
 }
 
@@ -48,4 +55,10 @@
   max-width: 800px;
   margin: 0 auto;
   border-left: dotted 3px black;
+}
+
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }

@@ -27,6 +27,9 @@ import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog.component';
 import { GraphQLModule } from './graphql.module';
 
+import { DisqusModule } from "ngx-disqus";
+import { ArticleComponent } from './article/article.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -34,7 +37,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    BlogComponent
+    BlogComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MarkdownModule.forRoot({ loader: HttpClient }),
     GraphQLModule,
     MobxAngularModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DisqusModule.forRoot('james-martin')
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr' },
