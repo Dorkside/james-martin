@@ -12,7 +12,6 @@
 
     .title {
       text-decoration: none;
-      color: mat-color($mat-amber, 800);
       margin-top: -4px;
     }
 
@@ -39,13 +38,11 @@
 
   .plus {
     font-family: 'Comfortaa', cursive !important;
+    text-decoration: none;
 
     h4 {
       float: right;
       text-align: right;
     }
-
-    text-decoration: none;
-    color: mat-color($mat-amber, 600);
   }
 }
