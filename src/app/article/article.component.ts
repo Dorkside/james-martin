@@ -14,7 +14,6 @@ export class ArticleComponent implements OnInit {
 
   constructor(private store: MainStore, private route: ActivatedRoute) {
     route.params.subscribe(params => {
-      console.log(params)
       if (params.id) {
         this.postId = params.id;
       }
@@ -25,6 +24,8 @@ export class ArticleComponent implements OnInit {
   }
 
   @computed get post() {
-    return this.store.getPosts.find(p => p.id === this.postId);
+    if (this.store.getPosts) {
+      return this.store.getPosts.find(p => p.id === this.postId);
+    }
   }
 }

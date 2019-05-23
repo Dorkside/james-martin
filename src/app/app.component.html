@@ -1,26 +1,25 @@
 <perfect-scrollbar class="mat-typography app scrollbar">
   <div class="container" fxLayout="column" fxLayoutAlign="start stretch">
-    <mat-toolbar class="toolbar" color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px"
-      fxFlex="1 1 64px">
-      <a routerLink="/" class="avatar">
-        <img ngxGravatar borderWidth="3" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256">
-      </a>
-      <a routerLink="/" class="title">
-        <h1>James D. Martin | Full Stack Developer</h1>
-      </a>
+    <mat-toolbar class="toolbar" color="primary" fxFlex="1 1 64px" fxLayout="row" fxLayoutAlign="center">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px" class="toolbar-content">
+        <a routerLink="/" class="avatar">
+          <img ngxGravatar borderWidth="3" [md5Hash]="'961f8d7f0e81a12d413b694e4a10d372'" size="256">
+        </a>
+        <a routerLink="/" class="title">
+          <h1>James D. Martin | Full Stack Developer</h1>
+        </a>
+      </div>
     </mat-toolbar>
-    <mat-toolbar class="nav-bar" color="accent" fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="16px"
+    <mat-toolbar class="nav-bar" color="accent" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="16px"
       fxFlex="1 1 64px">
-      <mat-toolbar-row fxLayout="row" fxLayoutAlign="end stretch">
-        <a routerLink="/" class="title small">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="toolbar-content sub">
+        <a routerLink="/" class="title">
           <h1>JDM</h1>
         </a>
-        <mat-nav-list class="main-menu" fxLayout="row" fxLayoutAlign="end stretch">
-          <a mat-list-item href="https://twitter.com/James_Dorkside">
-            <fa-icon mat-icon [icon]="['fab','twitter']"></fa-icon>
-          </a>
-        </mat-nav-list>
-      </mat-toolbar-row>
+        <a mat-icon-button href="https://twitter.com/James_Dorkside" class="white">
+          <fa-icon mat-icon [icon]="['fab','twitter']" size="lg"></fa-icon>
+        </a>
+      </div>
     </mat-toolbar>
     <section class="content" fxFlex="1 1 auto">
       <router-outlet></router-outlet>

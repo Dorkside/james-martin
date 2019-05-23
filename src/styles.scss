@@ -23,17 +23,8 @@ h6 {
 a {
   transition: color 350ms ease-in-out;
   color: mat-color($mat-amber, 800);
-
-  * {
-    transition: color 350ms ease-in-out;
-    color: mat-color($mat-amber, 800);
-  }
 }
 
 a:hover {
   color: mat-color($mat-amber, 400);
-
-  * {
-    color: mat-color($mat-amber, 400);
-  }
 }
